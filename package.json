@@ -1,0 +1,43 @@
+{
+  "name": "worldscentz-tracking",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c red,gray \"node --watch server/index.mjs\" \"vite\"",
+    "dev:rede": "concurrently -k -n api,web -c red,gray \"node --watch server/index.mjs\" \"vite --host\"",
+    "server": "node server/index.mjs",
+    "web": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "msc:sync": "node scripts/msc-sync.mjs",
+    "demo:seed": "node scripts/seed-demo.mjs",
+    "servico:instalar": "node scripts/servico.mjs instalar",
+    "servico:status": "node scripts/servico.mjs status",
+    "servico:desinstalar": "node scripts/servico.mjs desinstalar"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.19.17",
+    "hono": "^4.13.14",
+    "leaflet": "1.9",
+    "lucide-react": "^1.63.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-leaflet": "^5.0.0",
+    "read-excel-file": "9.3.10",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
+  },
+  "devDependencies": {
+    "@types/geojson": "^7946.0.16",
+    "@types/leaflet": "^1.9.22",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/topojson-client": "^3.1.5",
+    "@vitejs/plugin-react": "^4.7.0",
+    "concurrently": "^9.2.5",
+    "playwright-core": "^1.64.1",
+    "typescript": "5.8",
+    "vite": "^6.4.5"
+  }
+}
