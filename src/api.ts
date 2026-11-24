@@ -1,11 +1,13 @@
 // Comunicação com o servidor/banco (server/index.mjs).
 import { fromServer, type Container, type Costs, type Customs, type LandInfo, type Receipt, type ServerShipment } from './data'
 import type { LogRow, Role, Settings, SyncRun, SyncStatus, User } from './ops'
+import { demoCall } from './demo'
 
 /** Disparado quando a sessão expira, para o app voltar à tela de login. */
 export const AUTH_EVENT = 'np-auth-required'
 
 async function call<T>(url: string, init?: RequestInit): Promise<T> {
+  if (import.meta.env.VITE_DEMO) return demoCall(url, init) as Promise<T>
   const isForm = init?.body instanceof FormData
   const r = await fetch(url, { ...init, headers: isForm ? init?.headers : { 'content-type': 'application/json', ...init?.headers } })
   const body = await r.json().catch(() => ({}))

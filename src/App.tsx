@@ -10,7 +10,7 @@ import {
   mscDelivered, isoDay, DAY,
   type Container, type Country, type Stage, type ProductItem, type Tracking, type MscUnit, type Receipt,
 } from './data'
-import { ContainerArt, Flag, Gauge, Modal, ReleasePill, StagePill, COUNTRY_NAME, containerColor } from './ui'
+import { ContainerArt, Flag, Gauge, Modal, ReleasePill, StagePill, COUNTRY_NAME, LOGO, containerColor } from './ui'
 import MapView from './MapView'
 import { api, AUTH_EVENT, type LogEntry } from './api'
 import {
@@ -34,7 +34,7 @@ export default function App() {
     const off = () => setAuth((a) => ({ ...a, user: null }))
     window.addEventListener(AUTH_EVENT, off); return () => window.removeEventListener(AUTH_EVENT, off)
   }, [])
-  if (!auth.checked) return <div className="shell boot"><img src="/logo-worldscentz.png" alt="WORLD SCENTZ" /><p>Carregando…</p></div>
+  if (!auth.checked) return <div className="shell boot"><img src={LOGO} alt="WORLD SCENTZ" /><p>Carregando…</p></div>
   if (!auth.user) return <LoginScreen needsSetup={auth.needsSetup} onDone={(user) => setAuth({ checked: true, needsSetup: false, user })} />
   return <Main user={auth.user} onLogout={async () => { await api.logout().catch(() => {}); setAuth({ checked: true, needsSetup: false, user: null }) }} />
 }
@@ -156,10 +156,10 @@ function Main({ user, onLogout }: { user: User; onLogout: () => void }) {
   ]
   const ed = can(user, 'edit')
 
-  if (loading) return <div className="shell boot"><img src="/logo-worldscentz.png" alt="WORLD SCENTZ" /><p>Carregando banco de dados…</p></div>
+  if (loading) return <div className="shell boot"><img src={LOGO} alt="WORLD SCENTZ" /><p>Carregando banco de dados…</p></div>
   if (error) return (
     <div className="shell boot">
-      <img src="/logo-worldscentz.png" alt="WORLD SCENTZ" />
+      <img src={LOGO} alt="WORLD SCENTZ" />
       <h2>Servidor do banco de dados desligado</h2>
       <p>Abra o terminal na pasta do projeto e rode <code>npm run dev</code>. Depois clique em tentar de novo.</p>
       <small>{error}</small>
@@ -172,7 +172,7 @@ function Main({ user, onLogout }: { user: User; onLogout: () => void }) {
     <div className="shell">
       <header className="top">
         <div className="brand">
-          <img src="/logo-worldscentz.png" alt="WORLD SCENTZ" />
+          <img src={LOGO} alt="WORLD SCENTZ" />
           <span className="brand-sep" />
           <span className="brand-sub">TRACKING</span>
         </div>

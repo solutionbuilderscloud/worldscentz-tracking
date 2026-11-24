@@ -12,6 +12,8 @@
     "preview": "vite preview",
     "msc:sync": "node scripts/msc-sync.mjs",
     "demo:seed": "node scripts/seed-demo.mjs",
+    "demo:snapshot": "node scripts/demo-snapshot.mjs",
+    "demo:build": "VITE_DEMO=1 vite build --base=/worldscentz-tracking/ --outDir dist/demo",
     "servico:instalar": "node scripts/servico.mjs instalar",
     "servico:status": "node scripts/servico.mjs status",
     "servico:desinstalar": "node scripts/servico.mjs desinstalar"

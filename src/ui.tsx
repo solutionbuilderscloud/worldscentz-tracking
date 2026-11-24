@@ -2,6 +2,8 @@ import type { ReactNode } from 'react'
 import { X } from 'lucide-react'
 import { STAGE_COLOR, STAGE_LABEL, type Country, type Stage } from './data'
 
+/** Caminho do logo respeitando a base do site (GitHub Pages serve em subpasta). */
+export const LOGO = import.meta.env.BASE_URL + 'logo-worldscentz.png'
 export const COUNTRY_NAME: Record<Country, string> = { PY: 'Paraguai' }
 /** Frota mista: metade azul, metade azul-escuro — fixo por tracker, só para variar o visual. */
 export const isNavy = (tracker: string) => [...tracker].reduce((a, ch) => a + ch.charCodeAt(0), 0) % 2 === 1
@@ -57,7 +59,7 @@ export function ContainerArt({ country, code, truck = true, className }: { count
       {[20, 866].map((x) => [20, 228].map((y) => <rect key={`${x}-${y}`} x={x} y={y} width="14" height="14" rx="2" fill="#0a0a0a" opacity=".7" />))}
       <text x="60" y="82" fill="#fff" fontSize="34" fontWeight="800" fontFamily="Manrope" letterSpacing="2">{prefix}</text>
       <text x="60" y="118" fill="#fff" fontSize="26" fontWeight="700" fontFamily="Manrope" opacity=".9">{num}</text>
-      <image href="/logo-worldscentz.png" x="700" y="44" width="150" height="172" preserveAspectRatio="xMaxYMid meet" />
+      <image href={LOGO} x="700" y="44" width="150" height="172" preserveAspectRatio="xMaxYMid meet" />
       {truck && (
         <g>
           <rect x="30" y="244" width="840" height="14" fill="#1b1b1b" />

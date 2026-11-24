@@ -15,7 +15,7 @@ import {
   type Alert, type LogRow, type Role, type Settings, type SyncRun, type SyncStatus, type User,
 } from './ops'
 import { api, type OpsPatch } from './api'
-import { Flag, Modal, COUNTRY_NAME, containerColor } from './ui'
+import { Flag, Modal, COUNTRY_NAME, LOGO, containerColor } from './ui'
 
 const today = () => isoDay(Date.now())
 const errMsg = (e: unknown) => (e instanceof Error ? e.message : String(e))
@@ -38,7 +38,7 @@ export function LoginScreen({ needsSetup, onDone }: { needsSetup: boolean; onDon
   return (
     <div className="shell boot login">
       <form className="login-card" onSubmit={submit}>
-        <img src="/logo-worldscentz.png" alt="WORLD SCENTZ" />
+        <img src={LOGO} alt="WORLD SCENTZ" />
         <span className="brand-sub">TRACKING</span>
         {needsSetup ? (
           <>
